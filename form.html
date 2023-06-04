@@ -1,0 +1,131 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <title>standard form</title>
+
+    <style>
+        #pic {
+            height: 400px;
+            width: 450px;
+            background-image: url(black-boy.jpg);
+            border-style: double;
+            color: whitesmoke;
+            cursor: text;
+        }
+        
+        .submit {
+            background-color: blue;
+            margin-top: 45px;
+            border-radius: 15px;
+            border: 0.5px solid blue;
+            position: relative;
+            top: 10px;
+            right: -150px;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            height: auto;
+            margin-top: 90px;
+            font-weight: 500;
+            box-shadow: 8px 12px 17px 3px #cccccc;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        
+        .submit:active {
+            box-shadow: 0px 0px 0px white;
+            background-color: #0080ff;
+        }
+        
+        div,
+        input,
+        textarea {
+            font-family: 'arial unicode MS';
+            padding: 10pt;
+            border-radius: 6px;
+            font-size: 35px;
+        }
+        
+        textarea {
+            resize: none;
+            height: 350px;
+            width: 70%;
+        }
+        
+        .search {
+            margin-bottom: 50px;
+            position: relative;
+            top: 135px;
+            border: 1px solid black;
+            padding: 4px;
+            width: 20em;
+        }
+    </style>
+
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+</head>
+
+<body leftmargin="100" topmargin="100">
+
+    <!--Actual Form-->
+
+    <form method="post" action="mailto:nafees.rayyan@gmail.com">
+
+        <div style="font-size:50.4px">
+            <input type="file" name="photo" accept="image/*" id="pic" required />
+            <br><br><br>
+
+            <input type="text" name="name" placeholder="Enter your name" required> <br> <br>
+            <input type="text" name="address" placeholder="Adress" required> <br><br>
+
+            <p>Birthdate:
+                <input style="background-color:white; height:30px" type="date" name="date" min="2005-01-01" max="2016-12-31" required />
+            </p>
+        </div>
+
+        <br><br>
+
+        <input type="email" name="email" placeholder="Email" required /> <br><br><br>
+
+        <input type="password" name="password" placeholder="Password" required /> <br><br><br>
+
+        <input type="number" name="phone" placeholder="Phone no." maxlength="13" required /> <br><br><br>
+
+        <textarea name="description" placeholder="Anything you want to say ?" required autocorrect></textarea> <br>
+
+        <center>
+            <input type="submit" value="SUBMIT" class="submit" name="submit" />
+        </center>
+
+    </form>
+
+    <br><br><br>
+    <hr size="3px" color="silver" width="90%" align="center">
+    <br><br><br>
+
+
+    <!-- Example of google site sezrch bar-->
+
+    <form method="get" action="http://www.google.com/search">
+        <div class="search">
+            <table border="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <input type="text" name="q" size="25" maxlength="255" value="" />
+                        <input type="submit" value="Google Search" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" style="font-size:75%">
+                        <input type="checkbox" name="sitesearch" value="pythonanywhere.com" checked /> Will search for python anywhere<br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </form>
+
+</body>
+
+</html>

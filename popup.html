@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Popup Example | w3schools</title>
+    <script src="../../jquery.js"></script>
+    <style>
+        /* Popup container - can be anything you want */
+        
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            user-select: none;
+        }
+        /* The actual popup */
+        
+        .popup .popuptext {
+            visibility: hidden;
+            width: 160px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -80px;
+        }
+        /* Popup arrow */
+        
+        .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        /* Toggle this class - hide and show the popup */
+        
+        .popup .show {
+            visibility: visible;
+            animation: fadeIn 0.5s;
+        }
+        /* Add animation (fade in the popup) */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body style="text-align:center">
+
+    <h2>Popup</h2>
+
+    <div class="popup" pop-msg="It worked">Click me to toggle the popup!
+        <span class="popuptext">A Simple Popup!</span>
+    </div>
+
+    <script>
+        $(function() {
+            $('.popup').hover(
+                // When the user hovers on div, open the popup
+                function() {
+                    $('.popuptext').text($(this).attr('pop-msg'));
+                    $('.popuptext').addClass('show')
+                },
+                function() {
+                    $(".popuptext").removeClass("show")
+                }
+            );
+        });
+    </script>
+
+</body>
+
+</html>

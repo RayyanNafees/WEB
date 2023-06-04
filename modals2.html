@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Modal Example | w3schools</title>
+    <script src="../../jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* The Modal (background) */
+        
+        .modal {
+            position: absolute;
+            /*Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow-y: scroll;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+        /* Modal Box */
+        
+        .modal-box {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            width: 80%;
+        }
+        /* The Close Button */
+        
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: -10px;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="markup">
+        <h2>Modal Example</h2>
+
+        <!-- Trigger/Open The Modal -->
+        <h2>Test</h2>
+        <button class="modalbtn" mod-text="It worked!">Open Modal</button>
+        <button class="modalbtn" mod-text="how's that ? send feedback on 'nafees.rayyan@gmail.com'">&heartsuit;</button>
+        <br><br><br>
+
+        <h2>Differences</h2>
+        <button class="modalbtn" mod-text="mod-text escapes a <span style='color:red'>TAG</span>">mod-text</button>
+        <button class="modalbtn" mod-html="mod-text does'nt escapes a <span style='color:red'>TAG</span>">mod-html</button>
+        <br><br><br>
+
+        <h2>Usage</h2>
+        <button class="modalbtn" mod-text="Can be used to create custom alerts;
+    Use 'mod-text=$(element).text()' to add another elements text">mod-text</button>
+        <button class="modalbtn" mod-html="Can be used to create custom windows;<br>
+    Use 'mod-html=$(element).html()' to add another elements text">mod-html</button>
+        <br><br><br>
+
+
+        <h2>Example</h2>
+        <input type="text" id="inp" placeholder="$('#inp').val()">
+        <button class="modalbtn" mod-text="$('#inp').val()">mod-text</button><br>
+    </div>
+    <p>Any element's (here the documen)'s html using <b>"$('#markup').html"</b>
+        <button class="modalbtn" mod-html="$('#markup').html()">mod-html</button>
+    </p>
+
+
+    <script>
+        // Adding the pre-requisite...
+
+        $('body').append(`
+        <!-- The Modal -->
+        <div id="tech">
+        <div id="myModal" class="modal" hidden>
+
+            <!-- Modal content -->
+            <div class="modal-box">
+                <span class="close">&times;</span>
+                <div></div>
+            </div>
+        </div></div>
+        `);
+
+        var modal = $("#myModal"); // Get the modal
+        var content = $('.modal-box div') // Get the modal box
+
+        function alter(val) {
+            // To evaluate a function returning text/html in mod-(text/html)
+            try {
+                return eval(val)
+            } catch {
+                return val
+            }
+        }
+
+        // When the user clicks the button, open the modal 
+        $(".modalbtn").click(function() {
+            content.children().remove(); // empty the content
+            content.text(alter($(this).attr('mod-text'))); // add text if 'mod-text'
+            content.html(alter($(this).attr('mod-html'))); // add html if 'mod-html'
+            modal.fadeIn(150); // make it appear with a fading effect
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        $(".close").click(() => {
+            modal.fadeOut(100);
+            content.children().remove()
+        });
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = e => e.target == document.getElementById('myModal') ? modal.fadeOut(100) : null;
+    </script>
+
+</body>
+
+</html>

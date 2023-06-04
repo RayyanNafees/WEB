@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Popup Example | w3schools</title>
+    <script src="../../jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+    <style>
+        /* Popup container - Position MUST be "relative*/
+        /* The actual popup */
+        
+        .popup .popuptext {
+            display: none;
+            width: 160px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -80px;
+        }
+        /* Popup arrow */
+        
+        .popup .popuptext::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+    </style>
+</head>
+
+<body style="text-align:center">
+
+    <h2>Popup</h2>
+
+    <button class="popup" pop-text="Add">+</button>
+    <button class="popup" pop-text="Sub">-</button>
+    <button class="popup" pop-text="mul">*</button>
+    <button class="popup" pop-text="div">/</button>
+
+    <script>
+        $('.popup').hover(
+            // When the user hovers on div, open the popup
+            function() {
+                $(this).css('position', 'relative'); // set the position that needs to be relative for pop-ups
+                $(this).append('<span class="popuptext"></span>'); // Adds a hidden <span> element containing the popup
+                pop_txt = $(this).children('.popuptext'); // Globally, the child <span> be 'pop_txt'
+                pop_txt.text($(this).attr('pop-text')); // Set the <span>'s text as in the 'pop-text' attribute
+                pop_txt.fadeIn(400); // Make it appear with a faded effect
+            },
+            () => pop_txt.remove() // remove the <span>
+        );
+    </script>
+
+</body>
+
+</html>
